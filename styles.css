@@ -4,6 +4,7 @@ body {
     padding: 0;
     text-align: center;
     background-color: #f4f4f4;
+    height: 100vh;
 }
 
 header {
@@ -45,11 +46,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 80vh;
     .productionChain {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 100px;
     }
 }
 
@@ -76,3 +77,54 @@ footer {
     margin-bottom: 10px;
 }
 
+/* Flow bands styling */
+.flow-band {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 0 20px;
+    height: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flow-band-eau {
+    border-left: 5px solid #FF5733;
+}
+
+.flow-band-minerai {
+    border-left: 5px solid #3399FF;
+}
+
+.flow-band-gaz {
+    border-left: 5px solid #33CC33;
+}
+.flow-band-petrole {
+    border-left: 5px solid #33CC33;
+}
+.flow-band-energie_fossile {
+    border-left: 5px solid #33CC33;
+}
+.flow-band-energie_renouvelable {
+    border-left: 5px solid #33CC33;
+}
+.flow-band-recyclage {
+    border-left: 5px solid #33CC33;
+}
+.flow-band-reemploi {
+    border-left: 5px solid #33CC33;
+}
+.flow-band-atmosphere {
+    border-left: 5px solid #33CC33;
+}
+.band-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.band-content {
+    display: flex;
+    gap: 10px;
+}

@@ -1,5 +1,6 @@
 async function init() {
-    populateProductionChain(fluxData);
+    populateProductionChain(fluxData, 2025);
+    populateBands(fluxData.years[0].productionSteps[0])
 }
 
 const menuToggle = document.getElementById("menu-toggle");
