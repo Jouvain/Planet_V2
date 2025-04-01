@@ -28,14 +28,13 @@ header {
             position: absolute;
             top: 30px;
             left: 0;
-            width: 150px;
             z-index: 5;
         }
-        #menu li {
+        #menu .menuItem {
             padding: 10px;
             cursor: pointer;
         }
-        #menu li:hover {
+        #menu .menuItem:hover {
             background: #ddd;
         }
     }
@@ -45,7 +44,7 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     height: 80vh;
     .productionChain {
         display: flex;
@@ -86,7 +85,7 @@ footer {
     border-radius: 10px;
     padding: 10px 20px;
     margin: 0 20px;
-    height: 30px;
+    height: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
