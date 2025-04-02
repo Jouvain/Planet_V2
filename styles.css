@@ -1,3 +1,15 @@
+:root {
+    --color-eau: #4F36CF;
+    --color-minerai: #cf5c36;
+    --color-gaz: #efc88b;
+    --color-petrole: #050517;
+    --color-energie_fossile: #d3d5d7;
+    --color-energie_renouvelable: #3e5622;
+    --color-recyclage: #f4e3b2;
+    --color-reemploi: #846c5b;
+    --color-atmosphere: #846c5b;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -90,33 +102,33 @@ footer {
 }
 
 .flow-band-eau {
-    border-left: 5px solid #FF5733;
+    border-left: 5px solid var(--color-eau);
 }
 
 .flow-band-minerai {
-    border-left: 5px solid #3399FF;
+    border-left: 5px solid var(--color-minerai);
 }
 
 .flow-band-gaz {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-gaz);
 }
 .flow-band-petrole {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-petrole);
 }
 .flow-band-energie_fossile {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-energie_fossile);
 }
 .flow-band-energie_renouvelable {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-energie_renouvelable);
 }
 .flow-band-recyclage {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-recyclage);
 }
 .flow-band-reemploi {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-reemploi);
 }
 .flow-band-atmosphere {
-    border-left: 5px solid #33CC33;
+    border-left: 5px solid var(--color-atmosphere);
 }
 .band-label {
     font-weight: bold;
@@ -126,4 +138,21 @@ footer {
 .band-content {
     display: flex;
     gap: 10px;
+}
+
+
+
+.arrow-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* S'assurer que les flèches sont sous les éléments interactifs */
+    pointer-events: none; /* Empêche les flèches d’interférer avec les clics */
+}
+
+.arrow-svg line {
+    stroke-linecap: round; /* Arrondit les extrémités des flèches */
+    transition: stroke-width 0.3s ease-in-out; /* Animation fluide lors des changements d'épaisseur */
 }

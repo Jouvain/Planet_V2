@@ -12,25 +12,25 @@ const fluxData = {
                 {
                     step: "Fabrication des matières premières, des composants et des emballages",
                     icon: "⚡",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    get: { eau: 10, minerai: 50, gaz: 20, petrole: 30, energie_fossile: 50, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
                     send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
                 },
                 {
                     step: "Transport des composants et des emballages",
                     icon: "🚚",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 60, energie_fossile: 60, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
                     send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
                 },
                 {
                     step: "Fabrication des menuiseries et préparation de leur transport",
                     icon: "🏭",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    get: { eau: 0, minerai: 0, gaz: 40, petrole: 0, energie_fossile: 40, energie_renouvelable: 20, recyclage: 0, reemploi: 0, atmosphere: 0 },
                     send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
                 },
                 {
                     step: "Transport des menuiseries",
                     icon: "🚚",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 40, energie_fossile: 40, energie_renouvelable: 0, recyclage: 0, reemploi: 30, atmosphere: 0 },
                     send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
                 },
                 {
@@ -42,7 +42,7 @@ const fluxData = {
                 {
                     step: "Utilisation",
                     icon: "🏠",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 10, atmosphere: 0 },
                     send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
                 },
                 {

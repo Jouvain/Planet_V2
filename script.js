@@ -2,6 +2,8 @@ async function init() {
     populateProductionChain(fluxData, 2025);
     populateBands(fluxData.years[0].productionSteps[0]);
     populateMenu(fluxData.years[0].productionSteps[0]);
+    drawArrows(fluxData, 2025, "send");
+    drawArrows(fluxData, 2025, "get");
 }
 
 
