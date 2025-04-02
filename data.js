@@ -60,13 +60,13 @@ const fluxData = {
                     step: "Production et distribution d’énergies",
                     icon: "🌱",
                     get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 90, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
-                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 50 }
+                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 30, energie_renouvelable: 20, recyclage: 0, reemploi: 0, atmosphere: 40 }
                 },
                 {
                     step: "Fabrication des matières premières, des composants et des emballages",
                     icon: "⚡",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
-                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
+                    get: { eau: 10, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 30, atmosphere: 0 },
+                    send: { eau: 0, minerai: 0, gaz: 10, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 10 }
                 },
                 {
                     step: "Transport des composants et des emballages",
@@ -136,26 +136,26 @@ const fluxData = {
                 {
                     step: "Transport des menuiseries",
                     icon: "🚚",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
-                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
+                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 50, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 10 }
                 },
                 {
                     step: "Installation des menuiseries",
                     icon: "🏗️",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
-                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
+                    get: { eau: 20, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 10, reemploi: 10, atmosphere: 0 },
+                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 30, atmosphere: 0 }
                 },
                 {
                     step: "Utilisation",
                     icon: "🏠",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
-                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
+                    get: { eau: 0, minerai: 45, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 40, atmosphere: 0 }
                 },
                 {
                     step: "Fin de vie",
                     icon: "♻️",
                     get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
-                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
+                    send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 70, reemploi: 70, atmosphere: 0 }
                 }
             ]
         },
@@ -313,7 +313,7 @@ const fluxData = {
                 {
                     step: "Fin de vie",
                     icon: "♻️",
-                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 },
+                    get: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 0, energie_renouvelable: 0, recyclage: 50, reemploi: 50, atmosphere: 0 },
                     send: { eau: 0, minerai: 0, gaz: 0, petrole: 0, energie_fossile: 10, energie_renouvelable: 0, recyclage: 0, reemploi: 0, atmosphere: 0 }
                 }
             ]

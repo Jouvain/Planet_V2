@@ -1,9 +1,15 @@
 async function init() {
     populateProductionChain(fluxData, 2025);
+    createTimeline(fluxData);
     populateBands(fluxData.years[0].productionSteps[0]);
     populateMenu(fluxData.years[0].productionSteps[0]);
-    drawArrows(fluxData, 2025, "send");
-    drawArrows(fluxData, 2025, "get");
+    drawGetArrows(fluxData, 2025);
+    drawSendArrows(fluxData, 2025);
+}
+
+function renderYear(chosenYear, fluxData) {
+
+
 }
 
 
