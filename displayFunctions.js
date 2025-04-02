@@ -21,13 +21,28 @@ function displayAllBands() {
 // ################################# affichage activable des échanges selon #######################################################
 
 function displayArrows() {
-    const arrowheads = document.querySelectorAll(".arrowheads");
-    arrowheads.forEach(element => {
-        element.style.visibility = element.style.visibility == "hidden" ? "visible" : "hidden";
+    const arrowheads = document.querySelectorAll(".arrowhead");
+    arrowheads.forEach(arrowhead => {
+        arrowhead.style.visibility = arrowhead.style.visibility == "hidden" ? "visible" : "hidden";
     })
     const arrows = document.querySelectorAll(".arrow");
     arrows.forEach(arrow => {
         arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
+    })
+}
+
+function displayArrowsBand(fluxKey) {
+    const arrowheads = document.querySelectorAll(".arrowhead");
+    arrowheads.forEach(arrowhead => {
+            if(arrowhead.classList.contains(`arrow-${fluxKey}`)) {
+                arrowhead.style.visibility = arrowhead.style.visibility == "hidden" ? "visible" : "hidden";
+            }
+    })
+    const arrows = document.querySelectorAll(".arrow");
+    arrows.forEach(arrow => {
+        if(arrow.classList.contains(`arrow-${fluxKey}`)){
+            arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
+        }
     })
 }
 
@@ -58,13 +73,3 @@ function activateBand(flowKey) {
     }
   }
   
-  /**
-   * Réinitialise une bande pour pouvoir rejouer l'animation
-   * @param {string} flowKey - La clé de la bande à réinitialiser
-   */
-  function resetBand(flowKey) {
-    const band = document.querySelector(`.flow-band-${flowKey}`);
-    if (band) {
-      band.classList.remove('active');
-    }
-  }

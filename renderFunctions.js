@@ -56,6 +56,7 @@ function createBand(flowKey) {
     band.appendChild(bandContent);
     band.addEventListener("click", ()=> {
         activateBand(flowKey);
+        displayArrowsBand(flowKey);
     })
     return band;
 }
@@ -75,7 +76,7 @@ function populateMenu(productionStep) {
     let element = createMenuItem("TOUS");
     element.addEventListener("click", ()=> {
         displayAllBands();
-        displayArrows();
+        // displayArrows();
     })
     menu.append(element);
 }
@@ -149,6 +150,9 @@ function drawGetArrows(fluxData, chosenYear) {
             if (!document.getElementById(arrowId)) {
                 const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
                 marker.setAttribute("id", arrowId);
+                marker.classList.add(`arrow-${fluxKey}`);
+                marker.classList.add("arrowhead");
+                marker.style.visibility = "hidden";
                 marker.setAttribute("viewBox", "0 0 10 10");  // Définir la vue pour le marqueur
             
                 // Fixer la taille du marqueur à une taille fixe (par exemple 10x10 pixels)
@@ -183,6 +187,7 @@ function drawGetArrows(fluxData, chosenYear) {
             arrow.setAttribute("stroke", color);
             arrow.setAttribute("stroke-width", strokeWidth);  // Largeur de la ligne (affecte uniquement la ligne)
             arrow.classList.add("arrow");
+            arrow.classList.add(`arrow-${fluxKey}`);
             arrow.style.visibility = "hidden";
             arrow.setAttribute("marker-end", `url(#${arrowId})`); // Utilise le marqueur pour la pointe de la flèche
             svgContainer.appendChild(arrow);
@@ -251,6 +256,9 @@ function drawSendArrows(fluxData, chosenYear) {
             
                 const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
                 marker.setAttribute("id", arrowId);
+                marker.classList.add(`arrow-${fluxKey}`);
+                marker.classList.add("arrowhead");
+                marker.style.visibility = "hidden";
                 marker.setAttribute("viewBox", "0 0 10 10");  // Définir la vue pour le marqueur
             
                 // Fixer la taille du marqueur à une taille fixe (par exemple 10x10 pixels)
@@ -285,6 +293,7 @@ function drawSendArrows(fluxData, chosenYear) {
             arrow.setAttribute("stroke", color);
             arrow.setAttribute("stroke-width", strokeWidth);  // Largeur de la ligne (affecte uniquement la ligne)
             arrow.classList.add("arrow");
+            arrow.classList.add(`arrow-${fluxKey}`);
             arrow.style.visibility = "hidden";
             arrow.setAttribute("marker-start", `url(#${arrowId})`); // Utilise le marqueur pour la pointe de la flèche
             svgContainer.appendChild(arrow);
