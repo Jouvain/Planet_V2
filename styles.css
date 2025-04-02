@@ -133,6 +133,7 @@ footer {
 .band-label {
     font-weight: bold;
     font-size: 14px;
+    z-index: 1;
 }
 
 .band-content {
@@ -213,3 +214,139 @@ footer {
     color: black;
     transform: translateX(-50%);
 }
+
+
+/* Animation pour le remplissage des bandes */
+@keyframes fillBand {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes emptyBand {
+    from {
+      background-position: -100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+  
+  /* Style de base pour les bandes activées */
+  .flow-band.active {
+    position: relative;
+    overflow: hidden;
+    .band-label {
+        color: white;
+    }
+  }
+  .flow-band.deactivated {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .flow-band.deactivated::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    animation: emptyBand 0.5s forwards ease-in-out;
+    z-index: 0;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #f8f8f8 50%, transparent 50%);
+}
+
+
+
+
+  .flow-band.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    animation: fillBand 0.5s forwards ease-in-out;
+    z-index: 0;
+    border-radius: 5px;
+}
+
+
+  
+  /* Couleurs spécifiques pour chaque type de bande */
+
+ 
+
+  .flow-band-eau.active::before {
+    background-image: linear-gradient(to right, var(--color-eau) 50%, transparent 50%);
+  }
+  .flow-band-minerai.active::before {
+    background-image: linear-gradient(to right, var(--color-minerai) 50%, transparent 50%);
+  }
+  .flow-band-gaz.active::before {
+    background-image: linear-gradient(to right, var(--color-gaz) 50%, transparent 50%);
+  }
+  .flow-band-petrole.active::before {
+    background-image: linear-gradient(to right, var(--color-petrole) 50%, transparent 50%);
+  }
+  .flow-band-energie_fossile.active::before {
+    background-image: linear-gradient(to right, var(--color-energie_fossile) 50%, transparent 50%);
+  }
+  .flow-band-energie_renouvelable.active::before {
+    background-image: linear-gradient(to right, var(--color-energie_renouvelable) 50%, transparent 50%);
+  }
+  .flow-band-recyclage.active::before {
+    background-image: linear-gradient(to right, var(--color-recyclage) 50%, transparent 50%);
+  }
+  .flow-band-reemploi.active::before {
+    background-image: linear-gradient(to right, var(--color-reemploi) 50%, transparent 50%);
+  }
+  .flow-band-atmosphere.active::before {
+    background-image: linear-gradient(to right, var(--color-atmosphere) 50%, transparent 50%);
+  }
+
+
+  .flow-band-eau.flow-band.deactivated::before {
+    background-color: var(--color-eau);
+  }
+  .flow-band-minerai.flow-band.deactivated::before {
+    background-color: var(--color-minerai);
+  }
+  .flow-band-gaz.flow-band.deactivated::before {
+    background-color: var(--color-gaz);
+  }
+  .flow-band-petrole.flow-band.deactivated::before {
+    background-color: var(--color-petrole);
+  }
+  .flow-band-energie_fossile.flow-band.deactivated::before {
+    background-color: var(--color-energie_fossile);
+  }
+  .flow-band-energie_renouvelable.flow-band.deactivated::before {
+    background-color: var(--color-energie_renouvelable);
+  }
+  .flow-band-recyclage.flow-band.deactivated::before {
+    background-color: var(--color-recyclage);
+  }
+  .flow-band-reemploi.flow-band.deactivated::before {
+    background-color: var(--color-reemploi);
+  }
+  .flow-band-atmosphere.flow-band.deactivated::before {
+    background-color: var(--color-atmosphere);
+  }
+
+    /* Style pour l'état d'animation */
+    .status {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    }
