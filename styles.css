@@ -21,15 +21,27 @@ body {
 
 header {
     height: 10vh;
+    background-color: white;
+    border-bottom: solid 2px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
     nav {
-        position: absolute;
+        /* position: absolute;
         top: 10px;
-        left: 10px;
+        left: 10px; */
         #menu-toggle {
             font-size: 24px;
             background: none;
             border: none;
             cursor: pointer;
+            background-color: lightgrey;
+            border-radius: 5px;
+            padding: 5px;
+            height: 50px;
+            width: 50px;
         }
         #menu {
             list-style: none;
