@@ -54,7 +54,8 @@ function createBand(flowKey) {
     bandContent.classList.add("band-content");
     band.appendChild(bandLabel);
     band.appendChild(bandContent);
-    band.addEventListener("click", ()=> {
+    band.addEventListener("click", (event)=> {
+        event.stopPropagation();
         activateBand(flowKey);
         if(band.classList.contains("active")) {
             displayArrowsBand(flowKey);
@@ -77,17 +78,27 @@ function populateMenu(productionStep) {
         })
         menu.append(element);
     }
-    let element = createMenuItem("TOUS");
+    let globalItemName = "TOUS";
+    let element = createMenuItem(globalItemName, globalItemName);
     element.addEventListener("click", ()=> {
         displayAllBands();
     })
     menu.append(element);
 }
 
-function createMenuItem(flowKey) {
+function createMenuItem(flowKey, globalItemName) {
     const menuItem = document.createElement("li");
     menuItem.classList.add("menuItem");
-    menuItem.innerText = flowKey;
+
+    const colorDot = document.createElement("span");
+    colorDot.classList.add("colorDot");
+    colorDot.style.backgroundColor = getFlowColor(flowKey);
+
+    if(flowKey != globalItemName) {
+        menuItem.append(colorDot);
+    }
+
+    menuItem.append(document.createTextNode(flowKey));
     return menuItem;
 }
 
@@ -307,15 +318,15 @@ function drawSendArrows(fluxData, chosenYear) {
 
 function getFlowColor(fluxKey) {
     const colors = {
-        "eau": "#4F36CF",
-        "minerai": "#cf5c36",
-        "gaz": "#efc88b",
-        "petrole": "#050517",
-        "energie_fossile": "#d3d5d7",
-        "energie_renouvelable": "#3e5622",
-        "recyclage": "#f4e3b2",
-        "reemploi": "#846c5b",
-        "atmosphere": "#846c5b"
+        "eau": getComputedStyle(document.documentElement).getPropertyValue("--color-eau").trim(),
+        "minerai": getComputedStyle(document.documentElement).getPropertyValue("--color-minerai").trim(),
+        "gaz": getComputedStyle(document.documentElement).getPropertyValue("--color-gaz").trim(),
+        "petrole": getComputedStyle(document.documentElement).getPropertyValue("--color-petrole").trim(),
+        "energie_fossile": getComputedStyle(document.documentElement).getPropertyValue("--color-energie_fossile").trim(),
+        "energie_renouvelable": getComputedStyle(document.documentElement).getPropertyValue("--color-energie_renouvelable").trim(),
+        "recyclage": getComputedStyle(document.documentElement).getPropertyValue("--color-recyclage").trim(),
+        "reemploi": getComputedStyle(document.documentElement).getPropertyValue("--color-reemploi").trim(),
+        "atmosphere": getComputedStyle(document.documentElement).getPropertyValue("--color-atmosphere").trim()
     };
     return colors[fluxKey] || "black";
 }

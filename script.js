@@ -30,13 +30,20 @@ const closeMenu = document.getElementById("close-menu");
 // });
 
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
     menu.classList.toggle("open");
 });
 
-closeMenu.addEventListener("click", () => {
+closeMenu.addEventListener("click", (event) => {
+    event.stopPropagation();
     menu.classList.remove("open");
 });
 
+document.addEventListener("click",(event)=>{
+    if(!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+        menu.classList.remove("open");
+    }
+})
 
 init();

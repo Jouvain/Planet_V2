@@ -23,7 +23,8 @@ function flipSwitch() {
 	}
 }
 
-flip.addEventListener("click", function () {
+flip.addEventListener("click", function (event) {
+	event.stopPropagation();
 	flipSwitch();
     switchActivationAllBands(left);
 });
