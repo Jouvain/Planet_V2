@@ -50,17 +50,9 @@ function switchDisplayArrows(productionStep) {
    }
 }
 function displayArrows(productionStep) {
-    const arrowheads = document.querySelectorAll(".arrowhead");
-    // arrowheads.forEach(arrowhead => {
-    //     arrowhead.style.visibility = arrowhead.style.visibility == "hidden" ? "visible" : "hidden";
-    // })
-    const arrows = document.querySelectorAll(".arrow");
-    // arrows.forEach(arrow => {
-    //     arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
-    // })
     for(let key in productionStep.get) {
         const band = document.querySelector(`.flow-band-${key}`);
-        if(band.classList.contains("active")) {
+        if(band.classList.contains("active") && band.style.visibility == "visible") {
             displayArrowsBand(key);
         }
    }
@@ -148,5 +140,34 @@ function activateBand(flowKey) {
       band.classList.toggle('active');
 
     }
-  }
-  
+}
+
+function activateAllBands() {
+    const bands = querySelectorAll(".flow-band");
+    bands.forEach(band => {
+        band.classList.add("active");
+    })
+}
+
+function deactivateAllBands() {
+    const bands = querySelectorAll(".flow-band");
+    bands.forEach(band => {
+        band.classList.remove("active");
+    })
+}
+
+function switchActivationAllBands(onOff) {
+    const bands = document.querySelectorAll(".flow-band");
+    bands.forEach(band => {
+        if(onOff) {
+            band.classList.remove("active");
+        } else {
+            band.classList.add("active"); 
+        }
+    })
+    if(onOff) {
+        hideArrows(); 
+    } else {
+        displayArrows(fluxData.years[0].productionSteps[0]);
+    }
+}
