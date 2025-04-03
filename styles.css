@@ -43,7 +43,7 @@ header {
         #menu {
             list-style: none;
             padding: 0;
-            display: none;
+            /* display: none; */
             background: white;
             border: 1px solid #ddd;
             position: absolute;
@@ -52,6 +52,12 @@ header {
             z-index: 5;
             padding-top: 30px;
             margin: 0;
+            width: 200px; 
+            transform: translateX(-100%); 
+            transition: transform 0.3s ease-in-out; 
+        }
+        #menu.open {
+          transform: translateX(0); 
         }
         #menu .menuItem {
             padding: 10px;

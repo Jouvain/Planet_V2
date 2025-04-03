@@ -355,6 +355,7 @@ function createTimeline(data) {
             timelineProgress.style.width = `${percentage}%`;
             drawGetArrows(fluxData,year);
             drawSendArrows(fluxData,year);
+            displayArrows(fluxData.years[0].productionSteps[0]);
         });
         timeline.appendChild(point);
         timeline.appendChild(label);
