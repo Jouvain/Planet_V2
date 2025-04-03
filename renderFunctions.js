@@ -204,7 +204,24 @@ function drawGetArrows(fluxData, chosenYear) {
             arrow.classList.add(`arrow-${fluxKey}`);
             arrow.style.visibility = "hidden";
             arrow.setAttribute("marker-end", `url(#${arrowId})`); // Utilise le marqueur pour la pointe de la flèche
+            arrow.setAttribute("pointer-events", "stroke");
             svgContainer.appendChild(arrow);
+
+            const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltip");
+            tooltip.innerText = `${value}`;
+            // mettre positionnement en place vis-ç-vis flèche
+            tooltip.style.position = "absolute";
+            tooltip.style.left = `${x1}px`;
+            tooltip.style.top = `${bandRect.top}px`;
+            main.append(tooltip);
+
+            arrow.addEventListener("mouseenter", ()=> {
+                tooltip.classList.toggle("tooltip-visible");
+            })
+            arrow.addEventListener("mouseleave", ()=> {
+                tooltip.classList.toggle("tooltip-visible");
+            })
             
         });
     });
@@ -310,7 +327,25 @@ function drawSendArrows(fluxData, chosenYear) {
             arrow.classList.add(`arrow-${fluxKey}`);
             arrow.style.visibility = "hidden";
             arrow.setAttribute("marker-start", `url(#${arrowId})`); // Utilise le marqueur pour la pointe de la flèche
+            arrow.setAttribute("pointer-events", "stroke");
             svgContainer.appendChild(arrow);
+
+            const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltip");
+            tooltip.innerText = `${value}`;
+            // mettre positionnement en place vis-ç-vis flèche
+            tooltip.style.position = "absolute";
+            tooltip.style.left = `${x1}px`;
+            tooltip.style.top = `${bandRect.top}px`;
+            main.append(tooltip);
+
+            arrow.addEventListener("mouseenter", ()=> {
+                tooltip.classList.toggle("tooltip-visible");
+            })
+            arrow.addEventListener("mouseleave", ()=> {
+                tooltip.classList.toggle("tooltip-visible");
+            })
+
         });
     });
 }
