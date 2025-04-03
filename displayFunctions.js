@@ -2,6 +2,11 @@
 function displayBand(bandName) {
     const band = document.querySelector(`.flow-band-${bandName}`);
     band.style.visibility = band.style.visibility == "hidden" ? "visible" : "hidden";
+    if(band.style.visibility == "visible" && band.classList.contains("active")) {
+        displayArrowsBand(bandName);
+    } else {
+        hideArrowsBand(bandName);
+    }
 }
 
 function displayAllBands() {
@@ -13,25 +18,69 @@ function displayAllBands() {
         }
    })
    bands.forEach(band => {
-       band.style.visibility = displayMode;
+        band.style.visibility = displayMode;
    })
+   if(displayMode == "hidden") {
+        hideArrows();
+   } else {
+        displayArrows(fluxData.years[0].productionSteps[0]);
+   }
+   
 }
 
 
 // ################################# affichage activable des échanges selon #######################################################
 
-function displayArrows() {
+function switchDisplayArrows(productionStep) {
+    const arrowheads = document.querySelectorAll(".arrowhead");
+    // arrowheads.forEach(arrowhead => {
+    //     arrowhead.style.visibility = arrowhead.style.visibility == "hidden" ? "visible" : "hidden";
+    // })
+    const arrows = document.querySelectorAll(".arrow");
+    // arrows.forEach(arrow => {
+    //     arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
+    // })
+    for(let key in productionStep.get) {
+        console.log(key)
+        const band = document.querySelector(`.flow-band-${key}`);
+        console.log(band);
+        if(band.classList.contains("active")) {
+            displayArrowsBand(key);
+        }
+   }
+}
+function displayArrows(productionStep) {
+    const arrowheads = document.querySelectorAll(".arrowhead");
+    // arrowheads.forEach(arrowhead => {
+    //     arrowhead.style.visibility = arrowhead.style.visibility == "hidden" ? "visible" : "hidden";
+    // })
+    const arrows = document.querySelectorAll(".arrow");
+    // arrows.forEach(arrow => {
+    //     arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
+    // })
+    for(let key in productionStep.get) {
+        const band = document.querySelector(`.flow-band-${key}`);
+        if(band.classList.contains("active")) {
+            displayArrowsBand(key);
+        }
+   }
+}
+function hideArrows() {
     const arrowheads = document.querySelectorAll(".arrowhead");
     arrowheads.forEach(arrowhead => {
-        arrowhead.style.visibility = arrowhead.style.visibility == "hidden" ? "visible" : "hidden";
+        arrowhead.style.visibility = "hidden";
+        console.log(arrowhead)
     })
     const arrows = document.querySelectorAll(".arrow");
     arrows.forEach(arrow => {
-        arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
+        arrow.style.visibility = "hidden";
     })
 }
 
-function displayArrowsBand(fluxKey) {
+
+
+function switchDisplayArrowsBand(fluxKey) {
+    
     const arrowheads = document.querySelectorAll(".arrowhead");
     arrowheads.forEach(arrowhead => {
             if(arrowhead.classList.contains(`arrow-${fluxKey}`)) {
@@ -42,6 +91,34 @@ function displayArrowsBand(fluxKey) {
     arrows.forEach(arrow => {
         if(arrow.classList.contains(`arrow-${fluxKey}`)){
             arrow.style.visibility = arrow.style.visibility == "hidden" ? "visible" : "hidden";
+        }
+    })
+}
+function displayArrowsBand(fluxKey) {
+    const arrowheads = document.querySelectorAll(".arrowhead");
+    arrowheads.forEach(arrowhead => {
+            if(arrowhead.classList.contains(`arrow-${fluxKey}`)) {
+                arrowhead.style.visibility = "visible";
+            }
+    })
+    const arrows = document.querySelectorAll(".arrow");
+    arrows.forEach(arrow => {
+        if(arrow.classList.contains(`arrow-${fluxKey}`)){
+            arrow.style.visibility = "visible";
+        }
+    })
+}
+function hideArrowsBand(fluxKey) {
+    const arrowheads = document.querySelectorAll(".arrowhead");
+    arrowheads.forEach(arrowhead => {
+            if(arrowhead.classList.contains(`arrow-${fluxKey}`)) {
+                arrowhead.style.visibility = "hidden";
+            }
+    })
+    const arrows = document.querySelectorAll(".arrow");
+    arrows.forEach(arrow => {
+        if(arrow.classList.contains(`arrow-${fluxKey}`)){
+            arrow.style.visibility = "hidden";
         }
     })
 }

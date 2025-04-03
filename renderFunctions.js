@@ -56,7 +56,12 @@ function createBand(flowKey) {
     band.appendChild(bandContent);
     band.addEventListener("click", ()=> {
         activateBand(flowKey);
-        displayArrowsBand(flowKey);
+        if(band.classList.contains("active")) {
+            displayArrowsBand(flowKey);
+        } else {
+            hideArrowsBand(flowKey);
+        }
+        
     })
     return band;
 }
@@ -69,14 +74,12 @@ function populateMenu(productionStep) {
         let element = createMenuItem(key);
         element.addEventListener("click", (e)=> {
             displayBand(e.target.innerText);
-            console.log(e.target.innerText);
         })
         menu.append(element);
     }
     let element = createMenuItem("TOUS");
     element.addEventListener("click", ()=> {
         displayAllBands();
-        // displayArrows();
     })
     menu.append(element);
 }
