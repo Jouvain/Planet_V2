@@ -209,6 +209,7 @@ function drawGetArrows(fluxData, chosenYear) {
 
             const tooltip = document.createElement("div");
             tooltip.classList.add("tooltip");
+            tooltip.classList.add(`tooltip-${fluxKey}`);
             tooltip.innerText = `${value}`;
             // mettre positionnement en place vis-ç-vis flèche
             tooltip.style.position = "absolute";
@@ -217,10 +218,14 @@ function drawGetArrows(fluxData, chosenYear) {
             main.append(tooltip);
 
             arrow.addEventListener("mouseenter", ()=> {
-                tooltip.classList.toggle("tooltip-visible");
+                if(arrow.style.visibility == "visible" && !tooltip.classList.contains("tooltip-activate")) {
+                    tooltip.classList.toggle("tooltip-visible");
+                }
             })
             arrow.addEventListener("mouseleave", ()=> {
-                tooltip.classList.toggle("tooltip-visible");
+                if(arrow.style.visibility == "visible" && !tooltip.classList.contains("tooltip-activate")) {
+                    tooltip.classList.toggle("tooltip-visible");
+                }
             })
             
         });
@@ -332,6 +337,7 @@ function drawSendArrows(fluxData, chosenYear) {
 
             const tooltip = document.createElement("div");
             tooltip.classList.add("tooltip");
+            tooltip.classList.add(`tooltip-${fluxKey}`);
             tooltip.innerText = `${value}`;
             // mettre positionnement en place vis-ç-vis flèche
             tooltip.style.position = "absolute";
@@ -340,10 +346,14 @@ function drawSendArrows(fluxData, chosenYear) {
             main.append(tooltip);
 
             arrow.addEventListener("mouseenter", ()=> {
-                tooltip.classList.toggle("tooltip-visible");
+                if(arrow.style.visibility == "visible" && !tooltip.classList.contains("tooltip-activate")) {
+                    tooltip.classList.toggle("tooltip-visible");
+                }
             })
             arrow.addEventListener("mouseleave", ()=> {
-                tooltip.classList.toggle("tooltip-visible");
+                if(arrow.style.visibility == "visible" && !tooltip.classList.contains("tooltip-activate")) {
+                    tooltip.classList.toggle("tooltip-visible");
+                }
             })
 
         });

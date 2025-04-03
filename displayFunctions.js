@@ -7,6 +7,7 @@ function displayBand(bandName) {
     } else {
         hideArrowsBand(bandName);
     }
+    displayAllActivatedTooltips();
 }
 
 function displayAllBands() {
@@ -25,6 +26,7 @@ function displayAllBands() {
    } else {
         displayArrows(fluxData.years[0].productionSteps[0]);
    }
+   displayAllActivatedTooltips();
    
 }
 
@@ -138,7 +140,7 @@ function activateBand(flowKey) {
         }, 1000); // Durée correspondant à celle de l'animation
       }
       band.classList.toggle('active');
-
+      displayAllActivatedTooltips();
     }
 }
 
@@ -147,6 +149,7 @@ function activateAllBands() {
     bands.forEach(band => {
         band.classList.add("active");
     })
+    displayAllActivatedTooltips();
 }
 
 function deactivateAllBands() {
@@ -154,6 +157,7 @@ function deactivateAllBands() {
     bands.forEach(band => {
         band.classList.remove("active");
     })
+    displayAllActivatedTooltips();
 }
 
 function switchActivationAllBands(onOff) {
@@ -174,5 +178,46 @@ function switchActivationAllBands(onOff) {
         hideArrows(); 
     } else {
         displayArrows(fluxData.years[0].productionSteps[0]);
+    }
+    displayAllActivatedTooltips();
+}
+
+
+// ################################# affichage centralisé des infobulles ###############################################
+
+function activateAllTooltips() {
+    const tooltips = document.querySelectorAll(`.tooltip`);
+    tooltips.forEach(tooltip => {
+        tooltip.classList.toggle("tooltip-activate");
+    })
+    displayAllActivatedTooltips();
+}
+
+function displayAllActivatedTooltips() {
+    console.log("displayAllTT lancé");
+    const productionStepTemplate = fluxData.years[0].productionSteps[0];
+    console.log(productionStepTemplate);
+    for(let key in productionStepTemplate.get) {
+        console.log(key);
+        const band = document.querySelector(`.flow-band-${key}`);
+        if(band.classList.contains("active") && band.style.visibility == "visible") {
+            console.log(band);
+            const tooltips = document.querySelectorAll(`.tooltip-${key}`);
+            tooltips.forEach(tooltip =>{
+                console.log(tooltip);
+                if(tooltip.classList.contains("tooltip-activate")) {
+                    tooltip.classList.add("tooltip-visible");
+                    console.log("Avec activate : " , tooltip.classList)
+                } else {
+                    tooltip.classList.remove("tooltip-visible");
+                    console.log("Sans activate : " , tooltip.classList)
+                }
+            })
+        } else {
+            const tooltips = document.querySelectorAll(`.tooltip-${key}`);
+            tooltips.forEach(tooltip => {
+                tooltip.classList.remove("tooltip-visible");
+            })
+        }
     }
 }

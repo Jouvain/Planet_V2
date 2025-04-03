@@ -19,6 +19,7 @@ const main = document.querySelector(".main");
 const menuToggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 const closeMenu = document.getElementById("close-menu");
+const tooltipsBtn = document.querySelector(".tooltip-btn")
 // menu.style.display = "none";
 
 // menuToggle.addEventListener("click", ()=> {
@@ -44,6 +45,10 @@ document.addEventListener("click",(event)=>{
     if(!menu.contains(event.target) && !menuToggle.contains(event.target)) {
         menu.classList.remove("open");
     }
+})
+
+tooltipsBtn.addEventListener("click", ()=> {
+    activateAllTooltips();
 })
 
 init();
