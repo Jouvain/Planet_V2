@@ -161,6 +161,11 @@ function switchActivationAllBands(onOff) {
     bands.forEach(band => {
         if(onOff) {
             band.classList.remove("active");
+            band.classList.add("deactivated");
+            // Optionnel: Retirer la classe après l'animation pour permettre de la rejouer
+            setTimeout(() => {
+                band.classList.remove('deactivated');
+            }, 1000); // Durée correspondant à celle de l'animation
         } else {
             band.classList.add("active"); 
         }
