@@ -26,6 +26,11 @@ function createStepCard(productionStep) {
     // injection
     stepCard.appendChild(stepIcon);
     stepCard.appendChild(stepText);
+
+    stepCard.addEventListener("click", function() {
+        createModal(productionStep);
+    });
+
     return stepCard;
 }
 
@@ -419,4 +424,182 @@ function createTimeline(data) {
     document.querySelector(`.year-point[data-year="2025"]`).classList.add("active");
     const defaultPercentage = ((years[0] - minYear) / (maxYear - minYear)) * 100;
     timelineProgress.style.width = `${defaultPercentage}%`;
+}
+
+
+// ##################################### gestion des modales ##########################################################
+
+function createModal(productionStep) {
+    const modalOverlay = document.createElement("div");
+    modalOverlay.classList.add("modal-overlay");
+    const modalContent = document.createElement("div");
+    modalContent.classList.add("modal-content");
+    const modalHeader = document.createElement("div");
+    modalHeader.classList.add("modal-header");
+    const modalTitle = document.createElement("h2");
+    modalTitle.innerText = productionStep.step;
+
+    const closeButton = document.createElement("button");
+    closeButton.innerHTML = "&times;";
+    closeButton.classList.add("close-modal");
+    closeButton.addEventListener("click", function() {
+        document.body.removeChild(modalOverlay);
+    });
+    
+    modalHeader.appendChild(modalTitle);
+    modalHeader.appendChild(closeButton);
+    
+    // Corps de la modal
+    const modalBody = document.createElement("div");
+    modalBody.classList.add("modal-body");
+    
+    // Ajouter l'icône
+    const modalIcon = document.createElement("div");
+    modalIcon.classList.add("modal-icon");
+    modalIcon.innerText = productionStep.icon;
+    
+    // Ajouter la description
+    const modalDescription = document.createElement("div");
+    modalDescription.classList.add("modal-description");
+    
+    if (productionStep.description) {
+        modalDescription.innerHTML = productionStep.description;
+    } else {
+        modalDescription.innerHTML = `Description détaillée pour l'étape "${productionStep.step}"`;
+    }
+
+    // Ajouter les informations sur les flux
+    const modalFluxInfo = document.createElement("div");
+    modalFluxInfo.classList.add("modal-flux-info");
+    const fluxInfoTitle = document.createElement("h3");
+    fluxInfoTitle.innerText = "Flux associés";
+    
+
+    const getFlux = document.createElement("div");
+    getFlux.classList.add("modal-subFlux");
+    const sendFlux = document.createElement("div");
+    sendFlux.classList.add("modal-subFlux");
+    
+    // Générer une liste des flux d'entrée
+    if (productionStep.get) {
+        const fluxTitle = document.createElement("h4");
+        fluxTitle.innerText = "Consommation :";
+        getFlux.appendChild(fluxTitle);
+        
+        const fluxList = document.createElement("ul");
+        fluxList.classList.add("flux-list");
+
+        for(let key in productionStep.get) {
+            const fluxItem = document.createElement("li");
+            let fluxColor = "#7d5d4f"; // couleur par défaut (marron)
+            
+            switch(key) {
+                case "eau":
+                    fluxColor = "#5852c9"; // violet
+                    break;
+                case "mineral":
+                    fluxColor = "#d45f3a"; // orange
+                    break;
+                case "gaz":
+                    fluxColor = "#e9c678"; // beige
+                    break;
+                case "petrole":
+                    fluxColor = "#0f0d1d"; // noir
+                    break;
+                case "energie_renouvelable":
+                    fluxColor = "#3e6c2d"; // vert
+                    break;
+                case "energie_fossile":
+                    fluxColor = "#c6c6c6"; // gris
+                    break;
+                case "recyclage":
+                    fluxColor = "#f2dc87"; // jaune
+                    break;
+            }
+            fluxItem.innerHTML = `<span class="flux-indicator" style="background-color: ${fluxColor}"></span> ${key}: ${productionStep.get[key]}`;
+            fluxList.appendChild(fluxItem);
+        }
+        getFlux.appendChild(fluxList);
+        modalFluxInfo.appendChild(getFlux);
+    }
+
+        // Générer une liste des flux de sortie
+        if (productionStep.send) {
+            const fluxTitle = document.createElement("h4");
+            fluxTitle.innerText = "Émission :";
+            sendFlux.appendChild(fluxTitle);
+            
+            const fluxList = document.createElement("ul");
+            fluxList.classList.add("flux-list");
+    
+            for(let key in productionStep.send) {
+                const fluxItem = document.createElement("li");
+                let fluxColor = "#7d5d4f"; // couleur par défaut (marron)
+                
+                switch(key) {
+                    case "eau":
+                        fluxColor = "#5852c9"; // violet
+                        break;
+                    case "mineral":
+                        fluxColor = "#d45f3a"; // orange
+                        break;
+                    case "gaz":
+                        fluxColor = "#e9c678"; // beige
+                        break;
+                    case "petrole":
+                        fluxColor = "#0f0d1d"; // noir
+                        break;
+                    case "energie_renouvelable":
+                        fluxColor = "#3e6c2d"; // vert
+                        break;
+                    case "energie_fossile":
+                        fluxColor = "#c6c6c6"; // gris
+                        break;
+                    case "recyclage":
+                        fluxColor = "#f2dc87"; // jaune
+                        break;
+                }
+                fluxItem.innerHTML = `<span class="flux-indicator" style="background-color: ${fluxColor}"></span> ${key}: ${productionStep.send[key]}`;
+                fluxList.appendChild(fluxItem);
+            }
+            sendFlux.appendChild(fluxList);
+            modalFluxInfo.appendChild(sendFlux);
+        }
+
+        // Assemblage du corps de la modal
+        modalBody.appendChild(modalIcon);
+        modalBody.appendChild(modalDescription);
+        modalBody.append(fluxInfoTitle);
+        modalBody.appendChild(modalFluxInfo);
+        
+        // Pied de la modal (boutons d'action si nécessaire)
+        const modalFooter = document.createElement("div");
+        modalFooter.classList.add("modal-footer");
+        
+        const okButton = document.createElement("button");
+        okButton.innerText = "OK";
+        okButton.classList.add("modal-button");
+        okButton.addEventListener("click", function() {
+            document.body.removeChild(modalOverlay);
+        });
+        
+        modalFooter.appendChild(okButton);
+        
+        // Assemblage de la modal
+        modalContent.appendChild(modalHeader);
+        modalContent.appendChild(modalBody);
+        modalContent.appendChild(modalFooter);
+        
+        modalOverlay.appendChild(modalContent);
+        
+        // Ajout de la modal au body
+        document.body.appendChild(modalOverlay);
+        
+        // Fermeture en cliquant en dehors de la modal
+        modalOverlay.addEventListener("click", function(event) {
+            if (event.target === modalOverlay) {
+                document.body.removeChild(modalOverlay);
+            }
+        });
+
 }
