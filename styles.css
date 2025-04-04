@@ -130,6 +130,11 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.step:hover {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 
 .icon {
